@@ -30,4 +30,9 @@ public interface BuildingDao {
     
     //deletes the building by it's name
     public void deleteBuildingByName(String buildingName);
+    
+    //get all the buildings from the database
+    public Building[] getAllBuildings();
+    
+    
 }

@@ -95,7 +95,7 @@
 
             <p> <P>
         </div>
-        <!-- Modal to edit building costs-->
+        <!-- Modal to add a building -->
         <div class="modal fade" id="addBuilding" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

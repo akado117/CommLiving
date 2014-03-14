@@ -42,12 +42,19 @@ public class iBuildingDao implements BuildingDao {
     
     private final String SQL_DELETE_BUILDING_BY_NAME =
             "DELETE FROM building WHERE building_name = ?";
+    
+    private final String SQL_GET_ALL_BUILDINGS =
+            "SELECT * FROM building";
+    
+    
 
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+    
+    
 
     @Override
     public String getBuildingNameByUsername(String username) {
@@ -120,6 +127,12 @@ public class iBuildingDao implements BuildingDao {
     @Override
     public void deleteBuildingByName(String buildingName) {
         jdbcTemplate.update(SQL_DELETE_BUILDING_BY_NAME, buildingName);
+    }
+
+    @Override
+    public Building[] getAllBuildings() {
+        List<Building> blist = jdbcTemplate.query(SQL_GET_ALL_BUILDINGS, new BuildingMapper());
+        return blist.toArray(new Building[0]);
     }
 
     private static final class BuildingMapper implements ParameterizedRowMapper<Building> {

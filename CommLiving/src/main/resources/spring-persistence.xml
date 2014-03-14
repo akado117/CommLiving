@@ -42,5 +42,9 @@
           class="com.swcguild.commliving.dao.iUserCostDao">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+    <bean id="RoomDao"
+          class="com.swcguild.commliving.dao.iRoomDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 </beans>
 

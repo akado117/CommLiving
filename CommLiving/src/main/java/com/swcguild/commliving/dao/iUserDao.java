@@ -38,6 +38,12 @@ public class iUserDao implements UserDao {
     private final String SQL_DELETE_AUTHORITIES =
             "DELETE FROM authorities WHERE username = ?";
     
+    private final String SQL_ADD_USER_TO_ROOM=
+            "UPDATE users SET room_id = ? WHERE username = ?";
+    
+    private final String SQL_CHECK_IF_USER_IN_DATABASE=
+            "Select * FROM users WHERE username = ?";
+    
     
     private JdbcTemplate jdbcTemplate;
 
@@ -103,6 +109,21 @@ public class iUserDao implements UserDao {
         }
         
         
+    }
+
+    @Override
+    public void setUserToRoom(String username, int roomId) {
+        jdbcTemplate.update(SQL_ADD_USER_TO_ROOM,roomId,username);
+    }
+
+    @Override
+    public boolean checkForUserInDatabase(String username) {
+        try{
+            jdbcTemplate.queryForObject(SQL_CHECK_IF_USER_IN_DATABASE,  new UserMapper(),username);
+            return true;
+        }catch(EmptyResultDataAccessException ex){
+            return false;
+        }
     }
 
 

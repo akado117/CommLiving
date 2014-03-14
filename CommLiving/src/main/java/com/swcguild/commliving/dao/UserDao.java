@@ -24,6 +24,12 @@ public interface UserDao {
     public void deleteUser(User user);
     //gets user by their username (username is forced to be unique)
     public User getUserByUsername(String username);
+    
+    //sets the user to a room
+    public void setUserToRoom(String userName, int RoomId);
+    
+    //checks to see if the user exists in the database
+    public boolean checkForUserInDatabase(String username);
    
     
 }
