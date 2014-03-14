@@ -74,10 +74,9 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <form:label path="buildingName">Building</form:label>
+                                    <form:label for="buildingName" path="buildingName">Building</form:label>
 
-                                    <form:select path="buildingName">
-                                        <form:option value="NONE" label="--- Select Building---"/>
+                                    <form:select name="buildingName" path="buildingName">
                                         <form:options items="${buildingNames}" />
                                     </form:select>
 
